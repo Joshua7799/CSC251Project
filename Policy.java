@@ -3,19 +3,19 @@ public class Policy
 
    private int policyNumber;
    
-   private string providerName;
+   private String providerName;
 
-   private string firstName;
+   private String firstName;
 
-   private string lastName;
+   private String lastName;
 
    private int age;
 
-   private string;
+   private String smokingStatus;
 
-   private int height;
+   private double height;
 
-   private int weight;
+   private double weight;
 
    private double bmi;
 
@@ -33,15 +33,23 @@ public class Policy
 
       age = 0;
 
-      smokerStatus = "Unentered";
+      smokingStatus = "Unentered";
 
-      height = 0;
+      height = 0.0;
 
-      weight = 0;
+      weight = 0.0;
+      
+      calculateBMI(height, weight);
+      
+      bmi = getBMI();
+      
+      calculatePrice(age, smokingStatus, bmi);
+      
+      price = getPrice();
 
    }
    
-   public Policy(int policy, string provider, string nameFirst, string nameLast, int ageNumber, string smoker, int heightInches, int weightLbs){
+   public Policy(int policy, String provider, String nameFirst, String nameLast, int ageNumber, String smoker, double heightInches, double weightLbs){
    
       policyNumber = policy;
 
@@ -51,13 +59,21 @@ public class Policy
 
       lastName = nameLast;
 
-      age = ageYears;
+      age = ageNumber;
 
-      smokerStatus = smoker;
+      smokingStatus = smoker;
 
       height = heightInches;
 
       weight = weightLbs;
+      
+      calculateBMI(height, weight);
+      
+      bmi = getBMI();
+      
+      calculatePrice(age, smokingStatus, bmi);
+      
+      price = getPrice();
    }
    
    public void setPolicyNumber(int policy){
@@ -72,37 +88,37 @@ public class Policy
 
    }
 
-   public void setProviderName(string nameOfProvider){
+   public void setProviderName(String nameOfProvider){
 
       providerName = nameOfProvider;
 
    }
 
-   public string getProviderName(){
+   public String getProviderName(){
 
       return providerName;
 
    }
 
-   public void setFirstName(string nameFirst){
+   public void setFirstName(String nameFirst){
 
       firstName = nameFirst;
 
    }
 
-   public string getFirstName(){
+   public String getFirstName(){
 
       return firstName;
 
    }
 
-   public void setLastName(string nameLast){
+   public void setLastName(String nameLast){
 
       lastName = nameLast;
 
    }
 
-   public string getLastName(){
+   public String getLastName(){
 
       return lastName;
 
@@ -120,13 +136,13 @@ public class Policy
 
    }
 
-   public void setSmokingStatus(string smoker){
+   public void setSmokingStatus(String smoker){
 
       smokingStatus = smoker;
 
    }
 
-   public string getSmokingStatus(){
+   public String getSmokingStatus(){
 
       return smokingStatus;
 
@@ -138,7 +154,7 @@ public class Policy
    
    }
 
-   public int getHeight(){
+   public double getHeight(){
 
       return height;
 
@@ -150,25 +166,25 @@ public class Policy
 
    }
 
-   public int getWeight(){
+   public double getWeight(){
 
       return weight;
 
    }
 
-   public void calculateBMI(){
+   public void calculateBMI(double height, double weight){
 
       bmi = (weight* 703)/ (height * height);
-
+      
    }
 
-   public double getBMI{
-
-      return bmi
+   public double getBMI(){
+      
+      return bmi;
    
    }
 
-   public void calculatePrice
+   public void calculatePrice(int age, String smokingStatus, double bmi){
 
       if(age > 50){
 
@@ -176,17 +192,20 @@ public class Policy
 
       }
 
-      if(smokingStatus = "yes"){
+      if(smokingStatus == "smoker"){
 
          price = price + 75;
 
       }
 
-      if(BMI > 35){
+      if(bmi > 35){
 
-         price = price + ((BMI - 35) * 20);
+         price = price + ((bmi - 35) * 20);
 
       }
+      
+     
+}
 
    public double getPrice(){
 
