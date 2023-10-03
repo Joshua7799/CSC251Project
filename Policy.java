@@ -1,6 +1,6 @@
 public class Policy
 {
-
+   
    private int policyNumber; 
    
    private String providerName;
@@ -18,9 +18,9 @@ public class Policy
    private double weight;
 
    private double bmi;
-
-   private double price = 500;
-
+   
+   public double price = 500;
+   
    /**
    
    default constructor for policy class
@@ -50,6 +50,8 @@ public class Policy
       calculateBMI();
       
       calculatePrice();
+      
+      
 
    }
    
@@ -295,22 +297,23 @@ public class Policy
    */
 
    private void calculatePrice(){
-
+   
+   
       if(age > 50){
 
-         price = price + 70;
+         price += price + 70;
 
       }
 
       if(smokingStatus.equals("smoker")){
 
-         price = price + 75;
+         price += price + 75;
 
       }
 
       if(bmi > 35){
 
-         price = price + ((bmi - 35) * 20);
+         price += ((bmi - 35) * 20);
 
       }
       
@@ -322,7 +325,7 @@ public class Policy
    */
 
    public double getPrice(){
-
+   
       return price;
 
    }
