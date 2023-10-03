@@ -1,10 +1,16 @@
 import java.util.Scanner;
+import java.util.*; 
+import java.io.*;
 
 public class Project_Joshua_Torres{
 
    public static void main(String[] args){
    
-   Scanner keyboard = new Scanner(System.in); //scanner for input
+   try{
+   
+   File file = new File("PolicyInformation.txt"); //File to be input
+    
+   Scanner fileInput = new Scanner(file); //file input scanner
    
    int policyNumber = 0; //variables declared and initialized
    
@@ -26,33 +32,44 @@ public class Project_Joshua_Torres{
    
    double price = 0.0;
    
-   System.out.println("Please enter the Policy Number: "); //gets all information and assigns to variable
-   policyNumber = keyboard.nextInt();
-   keyboard.nextLine();
+   ArrayList<Policy> demo = new ArrayList<Policy>(); //array list for policies
    
-   System.out.println("\nPlease enter the Provider Name: ");
-   providerName = keyboard.nextLine();
-   
-   System.out.println("\nPlease enter the Policyholder’s First Name: ");
-   firstName = keyboard.next();
-   
-   System.out.println("\nPlease enter the Policyholder’s Last Name: ");
-   lastName = keyboard.next();
-   
-   System.out.println("\nPlease enter the Policyholder’s Age: ");
-   age = keyboard.nextInt();
-   
-   System.out.println("\nPlease enter the Policyholder’s Smoking Status (smoker/non-smoker): ");
-   smokingStatus = keyboard.next();
-   
-   System.out.println("\nPlease enter the Policyholder’s Height (in inches): ");
-   height = keyboard.nextDouble();
-   
-   System.out.println("\nPlease enter the Policyholder’s Weight (in pounds): ");
-   weight = keyboard.nextDouble();
-   
-   Policy demo = new Policy(policyNumber, providerName, firstName, lastName, age, smokingStatus, height, weight); //makes new policy
+   while(fileInput.hasNext()){
+         
+      //gets all information from file and assigns to variable
       
+      policyNumber = fileInput.nextInt();
+      fileInput.nextLine();
+   
+      providerName = fileInput.nextLine();
+
+      firstName = fileInput.next();
+      
+      lastName = fileInput.next();
+      
+      age = fileInput.nextInt();
+   
+      smokingStatus = fileInput.next();
+   
+      height = fileInput.nextDouble();
+   
+      weight = fileInput.nextDouble();
+         
+         if(fileInput.hasNext()){ 
+         
+            fileInput.nextLine();
+            fileInput.nextLine();
+            
+         }
+         
+         Policy d = new Policy(policyNumber, providerName, firstName, lastName , age, smokingStatus, height, weight); //pass all the inputs to constructor
+                 
+         demo.add(d); //adds to arraylist
+         
+         }
+      
+         fileInput.close();
+         
    System.out.println("\n\nPolicy Number: " + demo.getPolicyNumber()); //outputs everything
    System.out.println("\nProvider Name: " + demo.getProviderName());
    System.out.println("\nPolicyholder’s First Name: " + demo.getFirstName());
@@ -64,6 +81,13 @@ public class Project_Joshua_Torres{
    System.out.printf("\nPolicyholder’s BMI: " + "%,.2f",demo.getBMI());
    System.out.printf("\n\nPolicy Price: $" + "%,.2f",demo.getPrice());
    
-   }     
-
+   }
+   
+   //catch for try
+   catch(IOException ex){
+                  
+      System.out.println("Something went wrong reading the file: " + ex.getMessage());
+   }    
+ 
+   }
 }
