@@ -140,6 +140,17 @@ public class Policy
       return price;
 
    }
+   
+   /**
+   method to output all info
+   @return all the information
+   */
+   @Override
+   public String toString(){
+   
+   return "\n\nPolicy Number: " + policyNumber + "\nProvider Name: " + providerName + policyHolder.toString() + String.format("\n\nPolicy Price: $" + "%,.2f",price);
+   
+   }
 
 }
 
