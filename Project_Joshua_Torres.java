@@ -86,22 +86,16 @@ public class Project_Joshua_Torres{
          fileInput.close();
          
          
-         for(int i =0; i < demo.size(); i++){ 
-            System.out.println("\n\nPolicy Number: " + demo.get(i).getPolicyNumber()); //outputs everything
-            System.out.println("\nProvider Name: " + demo.get(i).getProviderName());
-            System.out.println("\nPolicyholder’s First Name: " + demo.get(i).getFirstName());
-            System.out.println("\nPolicyholder’s Last Name: " + demo.get(i).getLastName());
-            System.out.println("\nPolicyholder’s Age: " + demo.get(i).getAge());
-            System.out.println("\nPolicyholder’s Smoking Status: " + demo.get(i).getSmokingStatus());
-            System.out.println("\nPolicyholder’s Height: " + demo.get(i).getHeight());
-            System.out.println("\nPolicyholder’s Weight: " + demo.get(i).getWeight());
-            System.out.printf("\nPolicyholder’s BMI: " + "%,.2f",demo.get(i).getBMI());
-            System.out.printf("\n\nPolicy Price: $" + "%,.2f",demo.get(i).getPrice());           
-            System.out.println();
+         for(Policy policy : demo){ 
+            
+            System.out.println(policy); //outputs everything
+           
          } 
          
-         System.out.println("\n\nThe number of policies with a smoker is: " + smokerCount);
-         System.out.println("\nThe number of policies with a non-smoker is: " + nonSmokerCount); 
+         System.out.println("\n\nThere were " + Policy.policyTotal() + " policy objects created.");
+         System.out.println("\nThe number of policies with a smoker is: " + smokerCount);
+         System.out.println("\nThe number of policies with a non-smoker is: " + nonSmokerCount);
+         
     }
    
    //catch for try

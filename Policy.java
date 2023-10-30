@@ -4,10 +4,12 @@ public class Policy
    private int policyNumber; 
    
    private String providerName;
-      
-   public double price = 500;
+   
+   private double price = 500;
    
    private PolicyHolder policyHolder;
+   
+   private static int policyCount = 0;
    
    /**
    
@@ -26,6 +28,8 @@ public class Policy
       policyHolder = new PolicyHolder();
       
       calculatePrice();
+      
+      policyCount++;
       
       
    }
@@ -56,6 +60,8 @@ public class Policy
       policyHolder = new PolicyHolder(nameFirst, nameLast, ageNumber, smoker, heightInches, weightLbs);
                   
       calculatePrice();
+     
+      policyCount++;
      
    }
    
@@ -108,23 +114,24 @@ public class Policy
    */
 
    private void calculatePrice(){
-   
+      
+      price = 500;
    
       if(policyHolder.getAge() > 50){
 
-         price += price + 70;
+         price += 70;
 
       }
 
       if(policyHolder.getSmokingStatus().equals("smoker")){
 
-         price += price + 75;
+         price += 75;
 
       }
 
       if(policyHolder.getBMI() > 35){
 
-         price += ((policyHolder.getBMI() - 35) * 20);
+         price += ((policyHolder.getBMI() - 35) * 7.5);
 
       }
       
@@ -148,7 +155,17 @@ public class Policy
    @Override
    public String toString(){
    
-   return "\n\nPolicy Number: " + policyNumber + "\nProvider Name: " + providerName + policyHolder.toString() + String.format("\n\nPolicy Price: $" + "%,.2f",price);
+   return "\n\nPolicy Number: " + policyNumber + "\nProvider Name: " + providerName + policyHolder.toString() + String.format("\nPolicy Price: $" + "%,.2f",price);
+   
+   }
+   
+   /**
+   method to return total amount of policies
+   @return policyCount: the total amount of policies
+   */
+   public static int policyTotal(){
+   
+   return policyCount;
    
    }
 
