@@ -225,6 +225,18 @@ public class PolicyHolder
       return bmi;
    
    }
+   
+   /**
+   method to output all info
+   @return all the information
+   */
+   @Override
+   public String toString(){
+   
+   return  "\nPolicyholder’s First Name: " + firstName + "\nPolicyholder’s Last Name: " + lastName + "\nPolicyholder’s Age: " + age + "\nPolicyholder’s Smoking Status: " + smokingStatus + "\nPolicyholder’s Height: " + height + "\nPolicyholder’s Weight: " + weight + String.format("\nPolicyholder’s BMI: " + "%,.2f",bmi);
+
+   }
+
  
 }
 
